@@ -1,0 +1,40 @@
+{
+  "name": "fi-seed-component-routes",
+  "title": "Fi Seed Routes Component",
+  "description": "Fi Seed's Routes Component",
+  "version": "1.0.0",
+  "private": false,
+  "license": "MIT",
+  "author": "Final Development Studio <sorcery@finaldevstudio.com> (http://finaldevstudio.com)",
+  "contributors": [
+    "Santiago G. Marín <santiago@finaldevstudio.com>"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/finaldevstudio/fi-seed-component-routes.git"
+  },
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha --reporter list test/*.js"
+  },
+  "dependencies": {
+    "express": "^4.13.3",
+    "type-of-is": "^3.4.0",
+    "walk": "^2.3.9"
+  },
+  "devDependencies": {
+    "body-parser": "^1.13.3",
+    "chai": "^3.2.0",
+    "mocha": "^2.2.5",
+    "request": "^2.60.0"
+  },
+  "bugs": {
+    "url": "https://github.com/finaldevstudio/fi-seed-component-routes/issues"
+  },
+  "homepage": "https://github.com/finaldevstudio/fi-seed-component-routes",
+  "main": "lib/index.js",
+  "keywords": [
+    "component",
+    "fi-seed",
+    "routes"
+  ]
+}
