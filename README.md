@@ -1,96 +1,75 @@
-# fi-seed-component-sockets
-Fi Seed's Sockets component
+# fi-seed-component-routes
+Fi Seed's Routes component
 
 ## Installing
 
 ```
-npm install --save fi-seed-component-sockets
+npm install --save fi-seed-component-routes
 ```
 
 ## Usage
 ### Use on fi-seed
 
 ```js
-var sockets = component('sockets');
+var sockets = component('routes');
 ```
 
 ### Use on Express/Node app
 
 ```js
-var sockets = require('fi-seed-component-sockets');
+var sockets = require('fi-seed-component-routes');
 ```
 
 ### Initialization
-You must call it with your App's Server instance and a configuration object:
+You must call it with your Express' application instance and a configuration object:
 
 ```js
-var sockets = require('fi-seed-component-sockets');
-var http = require('http');
-var path = require('path');
+var routes = require('fi-seed-component-routes');
+var express = require('express');
 
-var server = http.createServer();
+var app = express();
 
-sockets.init({
-  basedir: path.normalize(path.join(__dirname, 'sockets')),
-  server: server,
-  debug: true
+routes(app, {
+  basedir: path.join(__basedir, 'routes'),
+  debug: require('debug')('app:routes'),
+  arguments: [
+    require('mongoose')
+  ]
 });
 
-server.listen(0);
-
-console.log('Server running on %s', server.address().port);
+app.listen(0);
 ```
 
 ### Configuration
-The configuration object must have an authorizer function and a route array. The `debug` parameter is optional but recommended.
-- **debug**: This option can be a `Function` to log into or a `Boolean`. If `true` it will use `console.log`.
-- **basedir**: This is required and must be a `string`. This is the absolute path where the socket scripts are located.
-- **server**: This is required and must be your App's Server instance.
+The configuration option can have the folloging properties:
+- **basedir**: This is required and must be a `string`. This is the absolute path where the route modules are located.
+- **debug**: This is optional and can be a `Function` to log into or a `Boolean`. If `true` it will use `console.log`.
+- **arguments**: This is optional and can be an array of values you wish to pass to each route module after the router.
 
-### Socket Modules
-The socket modules inside your `sockets` folder must be like this:
+### Route Modules
+The route modules inside your `routes` folder must be like this:
 
 ```js
-module.exports = function (nsp, io) {
+module.exports = function (router) {
 
-  nsp.on('connection', function (socket) {
+  router.get('/', function (req, res, next) {
+    //...
+  });
 
-    console.log("A user connected");
+  router.post('/', function (req, res, next) {
+    //...
+  });
 
-    socket.on('disconnect', function () {
-      console.log("A user disconnected");
-    });
-
+  router.get('/filtered', function (req, res, next) {
+    //...
   });
 
 };
 ```
 
-The exported function will recieve the `namespace` instance as created with `io.of(namespace)` and the current `io` instance. The namespace is created with the module's file name. If the module's file name is `index.js` then it'll be converted to `/`.
+The exported function will receive the `router` instance as created with `express.Router()` and the additional arguments. If the module's file name is `index.js` then its route will be `/` relative to its folder.
 
-Folders are also respected, so if a socket module is located in `[...]/sockets/chat/messaging.js` then it's namespace will be `/chat/messaging` and if it's file name is `index.js` inside that same folder then it's namespace will be `/chat`.
+Folders are also respected, so if a socket module is located in `[...]/routes/api/resources.js` then its path will be `/api/resources` and if its file name is `index.js` inside that same folder then its path will be `/api`.
 
-### Properties
-The Sockets component exposes the following properties:
-- **init**: The initialization `Function`. Must be called before anything else with an options parameter as shown in the <a href="#initialization">Initialization</a> example.
-- **io**: The current Socket.IO instance.
-- **modules**: An `Object` that contains all the namespaces as properties.
-- **of**: A convenient `Function` to retrieve the socket modules by its name or namespace path:
-
-  ```js
-  /* These will both return the [chat] namespace */
-  sockets.of('chat').emit('hello', 'everyone!');
-  sockets.of('/chat').emit('hello', 'everyone!');
-  /* These will both return the [chat/messaging] namespace */
-  sockets.of('/chat/messaging').emit('hello', 'everyone!');
-  sockets.of('chat/messaging').emit('hello', 'everyone!');
-  ```
-
-  If passed an empty string or a falsy value then it'll return the root namespace if it exists:
-
-  ```js
-  /* These will all return the [/] (index.js) namespace */
-  sockets.of('/').emit('hello', 'everyone!');
-  sockets.of('').emit('hello', 'everyone!');
-  sockets.of().emit('hello', 'everyone!');
-  ```
+#### Important
+As you can se, you can declare sub routes inside each route module so be aware of the order that routes are processed and be aware to not replace a declared route module path with a sub folder name.
