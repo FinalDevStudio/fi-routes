@@ -72,4 +72,4 @@ The exported function will receive the `router` instance as created with `expres
 Folders are also respected, so if a socket module is located in `[...]/routes/api/resources.js` then its path will be `/api/resources` and if its file name is `index.js` inside that same folder then its path will be `/api`.
 
 #### Important
-As you can se, you can declare sub routes inside each route module so be aware of the order that routes are processed and be aware to not replace a declared route module path with a sub folder name.
+As you can see, you can declare sub paths inside each route module so be aware of the order that routes are processed and be aware to not replace a declared route module path with a sub folder name.
