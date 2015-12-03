@@ -35,6 +35,8 @@
   "keywords": [
     "express",
     "fi-seed",
-    "routes"
+    "routes",
+    "router",
+    "route"
   ]
 }
