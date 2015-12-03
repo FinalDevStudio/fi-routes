@@ -2,7 +2,7 @@
   "name": "fi-routes",
   "title": "Fi Seed Routes Component",
   "description": "Routes loader for Node.js Express apps",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "private": false,
   "license": "MIT",
   "author": "Final Development Studio <sorcery@finaldevstudio.com> (http://finaldevstudio.com)",
