@@ -75,7 +75,7 @@ The first parameter will always be `express.Router()` so you can define your rou
 ```js
 config.arguments = [
   /* Second argument */
-  'A string',
+  require('mongoose'),
 
   /* Third argument */
   function aFunction() {
@@ -89,8 +89,8 @@ config.arguments = [
 Will be passed as:
 
 ```js
-/* mongoose.Schema will always be the first argument */
-module.exports = function (router, aString, aFunction) {
+/* express.Router() will always be the first argument */
+module.exports = function (router, mongoose, aFunction) {
 
   router.get('/filtered', function (req, res, next) {
     //...
