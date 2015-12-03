@@ -1,5 +1,5 @@
 # Fi Routes
-Routes loader for Node.js Express apps
+Routes loader for Node.js Express applications.
 
 ## Installing
 
