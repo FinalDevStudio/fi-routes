@@ -3,7 +3,7 @@ Routes loader for Node.js Express apps
 
 ## Installing
 
-```
+```sh
 npm install --save fi-routes
 ```
 
