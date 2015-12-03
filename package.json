@@ -33,6 +33,7 @@
   "homepage": "https://github.com/finaldevstudio/fi-routes",
   "main": "lib/index.js",
   "keywords": [
+    "express",
     "fi-seed",
     "routes"
   ]
