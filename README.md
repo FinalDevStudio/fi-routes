@@ -70,6 +70,37 @@ module.exports = function (router) {
 
 The exported function will receive the `router` instance as created with `express.Router()` and the additional arguments. If the module's file name is `index.js` then its route will be `/` relative to its folder.
 
+The first parameter will always be `express.Router()` so you can define your routes. The rest of the parameters will be the ones you define in the `config.arguments` `Array`:
+
+```js
+config.arguments = [
+  /* Second argument */
+  'A string',
+
+  /* Third argument */
+  function aFunction() {
+    //...
+  }
+
+  /* And so on... */
+];
+```
+
+Will be passed as:
+
+```js
+/* mongoose.Schema will always be the first argument */
+module.exports = function (router, aString, aFunction) {
+
+  router.get('/filtered', function (req, res, next) {
+    //...
+  });
+
+  //...
+
+};
+```
+
 Folders are also respected, so if a socket module is located in `<...>/routes/api/resources.js` then its path will be `/api/resources` and if its file name is `index.js` inside that same folder then its path will be `/api`.
 
 #### Important
