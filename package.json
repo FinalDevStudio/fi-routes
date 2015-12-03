@@ -1,7 +1,7 @@
 {
-  "name": "fi-seed-component-routes",
+  "name": "fi-routes",
   "title": "Fi Seed Routes Component",
-  "description": "Fi Seed's Routes Component",
+  "description": "Routes loader for Node.js Express apps",
   "version": "1.0.2",
   "private": false,
   "license": "MIT",
@@ -11,14 +11,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/finaldevstudio/fi-seed-component-routes.git"
+    "url": "git+https://github.com/finaldevstudio/fi-routes.git"
   },
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha --reporter list test/*.js"
   },
   "dependencies": {
     "express": "^4.13.3",
-    "type-of-is": "^3.4.0",
+    "is_js": "^0.7.4",
     "walk": "^2.3.9"
   },
   "devDependencies": {
@@ -28,12 +28,11 @@
     "request": "^2.60.0"
   },
   "bugs": {
-    "url": "https://github.com/finaldevstudio/fi-seed-component-routes/issues"
+    "url": "https://github.com/finaldevstudio/fi-routes/issues"
   },
-  "homepage": "https://github.com/finaldevstudio/fi-seed-component-routes",
+  "homepage": "https://github.com/finaldevstudio/fi-routes",
   "main": "lib/index.js",
   "keywords": [
-    "component",
     "fi-seed",
     "routes"
   ]
