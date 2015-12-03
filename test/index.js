@@ -9,7 +9,7 @@ var debug = console.log;
 var host = 'http://localhost';
 var text = 'Some useless text';
 
-describe('Fi Seed Sockets', function () {
+describe('Fi Routes', function () {
   before(function (done) {
     var bodyParser = require('body-parser');
     var express = require('express');
