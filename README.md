@@ -1,3 +1,7 @@
+---
+### No longer maintained.
+---
+
 # Fi Routes
 Routes loader for Node.js Express applications.
 
